@@ -9,8 +9,7 @@ package examen1p2_carlosbarahona_12041015;
  *
  * @author Admin
  */
-public class Deidad extends Persona {
-
+public class Deidad extends Extraterrestre {
     private boolean tieneCreyentes;
     private String religionMitologia;
 
@@ -37,13 +36,10 @@ public class Deidad extends Persona {
     }
 
     @Override
-    public void ultimaOportunidad(Persona p1, Persona p2) {
-        super.ultimaOportunidad(p1, p2); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public String toString() {
-        return "Deidad{" + "tieneCreyentes=" + tieneCreyentes + ", religionMitologia=" + religionMitologia + "nombre=" + nombre + ", poder=" + poder + ", debilidad=" + debilidad + ", HoV=" + HoV + ", fuerza=" + fuerza + ", habilidadMental=" + habilidadMental + ", habilidadFisica=" + habilidadFisica + ", tieneEscuadron=" + tieneEscuadron + '}';
+        return "Deidad{" + "tieneCreyentes=" + tieneCreyentes + ", religionMitologia=" + religionMitologia + nombre + ", poder=" + poder + ", debilidad=" + debilidad + ", HoV=" + HoV + ", fuerza=" + fuerza + ", habilidadMental=" + habilidadMental + ", habilidadFisica=" + habilidadFisica + ", tieneEscuadron=" + tieneEscuadron + '}';
     }
-
+    
+    
+    
 }

@@ -9,7 +9,7 @@ package examen1p2_carlosbarahona_12041015;
  *
  * @author Admin
  */
-public class Alien extends Persona {
+public class Alien extends Extraterrestre {
 
     private String planeta;
 
