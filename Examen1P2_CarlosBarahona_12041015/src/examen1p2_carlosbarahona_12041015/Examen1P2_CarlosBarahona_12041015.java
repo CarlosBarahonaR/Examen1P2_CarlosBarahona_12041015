@@ -24,7 +24,7 @@ public class Examen1P2_CarlosBarahona_12041015 {
         Scanner s = new Scanner(System.in);
         Random r = new Random();
         ArrayList<Persona> personas = new ArrayList();
-         ArrayList<Universo> universo = new ArrayList();
+        ArrayList<Universo> universo = new ArrayList();
         ArrayList<Escuadron> escuadron = new ArrayList();
 
         int opcion = 12;
@@ -685,7 +685,8 @@ public class Examen1P2_CarlosBarahona_12041015 {
                                 + "1) Crear escuadron\n"
                                 + "2) Editar escuadron \n"
                                 + "3) Listar escuadron\n"
-                                + "4) Eliminar escuadron"
+                                + "4) Eliminar escuadron\n"
+                                + "5) Agregar miembro"
                         );
                         opcion3 = s.nextInt();
                         switch (opcion3) {
@@ -755,13 +756,74 @@ public class Examen1P2_CarlosBarahona_12041015 {
                                         nombre2 = ((Escuadron) escuadron.get(y)).getNombre();
                                     }
                                     if (nombre.equals(nombre2)) {
-                                        
+
                                         escuadron.remove(y);
                                         y = escuadron.size();
                                     } else {
                                         y = escuadron.size();
                                         System.out.println("No se encontro el nombre del escuadron en la lista. Consulte con el soporte tecnico de la pagina.");
                                     }
+                                }
+
+                            }
+                            case 5: {
+                                System.out.println("Ingrese el nombre del escuadron que desea usar para agregar");
+
+                                String nombreEscuadron = s.nextLine();
+                                s.nextLine();
+                                Escuadron squad = null;
+
+                                for (int x = 0; x < escuadron.size(); x++) {
+                                    if (escuadron.get(x).getNombre().equals(nombreEscuadron)) {
+                                        squad = escuadron.get(x);
+                                    }
+
+                                }
+                                if (squad != null && squad.isHoV() == true) {
+                                    System.out.println("Ingrese el nombre del miembro que desea agregar al escuadron");
+
+                                    String nombreMiembro = s.nextLine();
+                                    Persona miembro = null;
+
+                                    for (int x = 0; x < personas.size(); x++) {
+                                        if ("heroe".equals(personas.get(x).getHoV())) {
+                                            if (personas.get(x).getNombre().equals(nombreMiembro)) {
+                                                miembro = personas.get(x);
+
+                                            }
+
+                                        }
+
+                                    }
+                                    if (miembro != null) {
+                                        squad.getMiembros().add(miembro);
+                                    } else {
+                                        System.out.println("No existe ese miembro");
+                                    }
+                                } else if (squad != null && squad.isHoV() == false) {
+                                    System.out.println("Ingrese el nombre del miembro que desea agregar al escuadron");
+
+                                    String nombreMiembro = s.nextLine();
+                                    Persona miembro = null;
+
+                                    for (int x = 0; x < personas.size(); x++) {
+                                        if ("villano".equals(personas.get(x).getHoV())) {
+                                            if (personas.get(x).getNombre().equals(nombreMiembro)) {
+                                                miembro = personas.get(x);
+
+                                            }
+
+                                        }
+
+                                    }
+                                    if (miembro != null) {
+                                        squad.getMiembros().add(miembro);
+                                    } else {
+                                        System.out.println("No existe ese miembro");
+                                    }
+
+                                } else {
+                                    System.out.println("No existe ese escuadron");
                                 }
 
                             }
@@ -778,7 +840,8 @@ public class Examen1P2_CarlosBarahona_12041015 {
                                 + "1) Crear universo\n"
                                 + "2) Editar universo \n"
                                 + "3) Listar universos\n"
-                                + "4) Eliminar universo"
+                                + "4) Eliminar universo\n"
+                                + "5) Agregar escuadron"
                         );
                         opcion3 = s.nextInt();
                         switch (opcion3) {
@@ -799,8 +862,6 @@ public class Examen1P2_CarlosBarahona_12041015 {
                                 }
 
                                 ArrayList<Escuadron> squads = new ArrayList();
-
-                             
 
                                 universo.add(new Universo(nombre, squads));
 
@@ -838,10 +899,53 @@ public class Examen1P2_CarlosBarahona_12041015 {
                                 }
 
                             }
+
+                            case 5: {
+
+                                System.out.println("Ingrese el nombre del universo que desea usar para agregar");
+
+                                String nombreUniverso = s.nextLine();
+                                s.nextLine();
+                                Universo universoo = null;
+
+                                for (int x = 0; x < universo.size(); x++) {
+                                    if (universo.get(x).getNombre().equals(nombreUniverso)) {
+                                        universoo = universo.get(x);
+                                    }
+
+                                }
+                                if (universoo != null) {
+                                    System.out.println("Ingrese el nombre del escuadron que desea agregar al universo");
+
+                                    String nombreSquad = s.nextLine();
+                                    Escuadron squad = null;
+
+                                    for (int x = 0; x < escuadron.size(); x++) {
+
+                                        if (escuadron.get(x).getNombre().equals(nombreSquad)) {
+                                            squad = escuadron.get(x);
+
+                                        }
+
+                                    }
+                                    if (squad != null) {
+                                        universoo.getSquads().add(squad);
+                                    } else {
+                                        System.out.println("No existe ese miembro");
+                                    }
+
+                                } else {
+                                    System.out.println("No existe ese escuadron");
+                                }
+
+                            }
                         }
                     }
 
                     break;
+
+                }
+                case 4: {
 
                 }
 
